@@ -35,8 +35,16 @@ public:
             return;
         }
         this->Content = (T*) realloc(this->Content, ++this->Size);
-        this->Content[this->Size] = element;
+        this->Content[this->Size - 1] = element;
     }
+
+    T &operator[](const int pos)
+    {   
+        if (pos > this->Size - 1) ThrowError("Array index too high");
+        if (pos < 0) ThrowError("Array index too low");
+        
+        return this->arr[pos];
+    }   
 
     Set<T> IntersectionWith(Set<T> other)
     {
@@ -45,9 +53,14 @@ public:
         {
             if (other.Has(this->Content[i]))
             {
-                ret.Add(this->Content[i])
+                ret.Add(this->Content[i]);
             } 
         }
         return ret;
+    }
+
+    int GetSize()
+    {
+        return this->Size;
     }
 };

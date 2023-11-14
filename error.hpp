@@ -9,10 +9,11 @@ void ThrowError(const char * ErrorMessage)
     exit(1);
 }
 
-void Assert(bool Statement)
+void Assert(bool Statement, const char * ErrorMessage = "Something went wrong...")
 {
     if (!Statement)
     {
-        ThrowError("Assertion error");
+        printf("%sASSERTION ERROR:%s %s\n", RED_TEXT, RESET_TEXT, ErrorMessage);
+        exit(1);
     }
 }
