@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "array.hpp"
-#include "string.hpp"
 #include "colors.h"
 #include "set.hpp"
 #include "dictionary.hpp"
@@ -17,11 +16,6 @@ char * Input(const char * InputText = "")
 void PrintLine(const char * ToPrint)
 {
     printf("%s\n", ToPrint);
-}
-
-void PrintLine(String ToPrint)
-{
-    printf("%s\n", ToPrint.GetCString());
 }
 
 template <typename T>
