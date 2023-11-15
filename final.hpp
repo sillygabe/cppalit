@@ -3,6 +3,8 @@
 #include "array.hpp"
 #include "string.hpp"
 #include "colors.h"
+#include "set.hpp"
+#include "dictionary.hpp"
 
 char * Input(const char * InputText = "")
 {
