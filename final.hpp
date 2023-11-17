@@ -6,6 +6,8 @@
 #include "dictionary.hpp"
 #include "string.hpp"
 
+#define in :
+
 String Input(const char * InputText = "")
 {
     printf("%s", InputText);
