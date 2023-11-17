@@ -58,6 +58,16 @@ public:
         return this->content;
     }
 
+    bool operator==(String other)
+    {
+        return (!strcmp(this->content, other.content));
+    }
+
+    bool operator!=(String other)
+    {
+        return (strcmp(this->content, other.content));
+    }
+
     void Reverse()
     {
         int a = 0, b = this->GetSize() - 1; char buff;

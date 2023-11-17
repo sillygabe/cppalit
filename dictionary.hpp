@@ -45,6 +45,16 @@ public:
         }
     }
 
+    T* begin()
+    {
+        return &(this->keys[0]);
+    }
+
+    T* end()
+    {
+        return &(this->keys[this->size]);
+    }
+
     int GetSize()
     {
         return this->size;
