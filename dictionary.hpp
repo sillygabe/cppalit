@@ -12,7 +12,7 @@ public:
     Dictionary()
     {
         this->keys = (T*) malloc(0 * sizeof(T));
-        this->values = (T*) malloc(0 * sizeof(P));
+        this->values = (P*) malloc(0 * sizeof(P));
         this->size = 0;
     }
 
@@ -28,9 +28,10 @@ public:
     P &operator[](const T pos)
     {
         int index = -1;
+        T n = (T) pos;
         for (int i = 0; i < this->GetSize(); i++)
         {
-            if (this->keys[i] == pos)
+            if (this->keys[i] == n)
             {
                 index = i;
                 break;

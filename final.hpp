@@ -4,8 +4,9 @@
 #include "colors.h"
 #include "set.hpp"
 #include "dictionary.hpp"
+#include "string.hpp"
 
-char * Input(const char * InputText = "")
+String Input(const char * InputText = "")
 {
     printf("%s", InputText);
     char * inp = (char *) malloc(sizeof(char) * 40);

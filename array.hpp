@@ -35,6 +35,11 @@ public:
         return this->arr[pos];
     }   
 
+    operator T*()
+    {
+        return this->arr;
+    }
+
     void Reverse()
     {
         int a = 0, b = this->size - 1; T buff;
@@ -46,6 +51,16 @@ public:
             this->arr[b] = buff;
             a++; b--;
         }
+    }
+
+    T* begin()
+    {
+        return &(this->arr[0]);
+    }
+
+    T* end()
+    {
+        return &(this->arr[this->size]);
     }
 
     int GetSize() {return this->size;}

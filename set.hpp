@@ -63,4 +63,14 @@ public:
     {
         return this->Size;
     }
+
+    T* begin()
+    {
+        return &(this->Content[0]);
+    }
+
+    T* end()
+    {
+        return &(this->Content[this->Size]);
+    }
 };

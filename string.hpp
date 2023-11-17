@@ -70,6 +70,16 @@ public:
         }
     }
 
+    char * begin()
+    {
+        return &(this->content[0]);
+    }
+
+    char * end()
+    {
+        return &(this->content[this->GetSize()]);
+    }
+
     /*int Count(String ToCount)
     {
 
