@@ -58,6 +58,11 @@ public:
         return this->content;
     }
 
+    operator const char*()
+    {
+        return (const char *) this->content;
+    }
+
     bool operator==(String other)
     {
         return (!strcmp(this->content, other.content));

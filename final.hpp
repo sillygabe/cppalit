@@ -3,7 +3,7 @@
 #include "array.hpp"
 #include "colors.h"
 #include "set.hpp"
-#include "dictionary.hpp"
+#include "hashmap.hpp"
 #include "string.hpp"
 
 #define in :
