@@ -107,4 +107,32 @@ public:
         ThrowError("Wrong key");
         return this->elements[0];
     }
+
+    P& operator[](const int hashpos)
+    {
+        for (int i = 0; i < this->size; i++)
+        {
+            if (hashpos == this->keys[i])
+            {
+                return this->elements[i];
+            }
+        }
+        ThrowError("Wrong key");
+        return this->elements[0];
+    }
+
+    int GetSize()
+    {
+        return this->size;
+    }
+
+    int * begin()
+    {
+        return &(this->keys[0]);
+    }
+
+    int * end()
+    {
+        return &(this->keys[size]);
+    }
 };
