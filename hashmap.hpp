@@ -38,6 +38,11 @@ public:
     {
         return this->value;
     }
+
+    operator int()
+    {
+        return this->value;
+    }
 };
 
 template <typename T, typename P>
@@ -136,3 +141,7 @@ public:
         return &(this->keys[size]);
     }
 };
+
+#define Dict HashMap
+#define Dictionart HashMap
+#define Table HashMap
