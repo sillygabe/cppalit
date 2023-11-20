@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "colors.h"
+#include "colors.hpp"
 #pragma once
 
 void ThrowError(const char * ErrorMessage)
