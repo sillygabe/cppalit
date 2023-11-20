@@ -87,7 +87,7 @@ public:
 
     void Update(T key, P value)
     {
-        Assert(this->HasKey(key), "Key already in the hashmap");
+        Assert(!this->HasKey(key), "Key already in the hashmap");
         this->keys = (int*) realloc(this->keys, ++this->size);
         this->elements = (P*) realloc(this->elements, this->size);
         this->keys[this->size - 1] = Hash(key).GetValue();
