@@ -1,12 +1,11 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "array.hpp"
-#include "colors.h"
+#include "colors.hpp"
 #include "set.hpp"
 #include "hashmap.hpp"
 #include "string.hpp"
-
-#define in :
+#include "function.hpp"
+#include "defs.hpp"
 
 String Input(const char * InputText = "")
 {
@@ -16,9 +15,18 @@ String Input(const char * InputText = "")
     return inp;
 }
 
-void PrintLine(const char * ToPrint)
+void PrintLine(String ToPrint)
 {
-    printf("%s\n", ToPrint);
+    printf("%s\n", ToPrint.GetChars());
+}
+
+template <typename T>
+void PrintArray(Array<T> arr, String Sep = " ")
+{
+    for (T elem : arr)
+    {
+        Print(elem, Sep);
+    }
 }
 
 template <typename T>
@@ -28,3 +36,10 @@ void Swap(T &Element1, T &Element2)
     Element1 = Element2;
     Element2 = buff;
 }
+
+/*
+Array<String> SplitString(String ToSplit, String Sep)
+{
+
+}
+*/

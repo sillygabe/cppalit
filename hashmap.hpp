@@ -142,6 +142,3 @@ public:
     }
 };
 
-#define Dict HashMap
-#define Dictionary HashMap
-#define Table HashMap

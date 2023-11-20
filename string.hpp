@@ -1,6 +1,27 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 #include "error.hpp"
+
+char * EvalDigit(int num)
+{
+    char * ret;
+    switch (num % 10)
+    {
+    case 0: ret = (char *)"0"; break;
+    case 1: ret = (char *)"1"; break;
+    case 2: ret = (char *)"2"; break;
+    case 3: ret = (char *)"3"; break;
+    case 4: ret = (char *)"4"; break;
+    case 5: ret = (char *)"5"; break;
+    case 6: ret = (char *)"6"; break;
+    case 7: ret = (char *)"7"; break;
+    case 8: ret = (char *)"8"; break;
+    case 9: ret = (char *)"9"; break;
+    default: ThrowError("wtf man did you invent a new digit or what"); break;
+    }
+    return ret;
+}
 
 class String
 {
@@ -33,6 +54,17 @@ public:
     {
         this->content = (char *) malloc(strlen(input) + 1);
         this->content = strcpy(this->content, (char *) input);
+    }
+
+    String(int num)
+    {
+        this->content = (char *) malloc(0);
+        while (num != 0)
+        {
+            this->operator+=(EvalDigit(num));
+            num /= 10;
+        }
+        this->Reverse();
     }
 
     String operator+(String other)
@@ -95,8 +127,24 @@ public:
         return &(this->content[this->GetSize()]);
     }
 
-    /*int Count(String ToCount)
-    {
+    int Count(String substring) {
+        Assert(substring != String(""), "Cannot count \"\" in a string");
+        int count = 0;
+        const char* ptr = this->content;
 
-    }*/
+        while ((ptr = strstr(ptr, substring)) != NULL) {
+            count++;
+            ptr += strlen(substring);
+        }
+
+        return count;
+    }
 };
+
+/*
+String Format(String ToFormat, ...)
+{
+    va_list args; va_start(args, ToFormat);
+
+}
+*/
