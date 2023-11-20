@@ -93,4 +93,18 @@ public:
         this->keys[this->size - 1] = Hash(key).GetValue();
         this->elements[this->size - 1] = value;
     }
+
+    P& operator[](const T key)
+    {
+        const int ConKey = Hash(key).GetValue();
+        for (int i = 0; i < this->size; i++)
+        {
+            if (ConKey == this->keys[i])
+            {
+                return this->elements[i];
+            }
+        }
+        ThrowError("Wrong key");
+        return this->elements[0];
+    }
 };
