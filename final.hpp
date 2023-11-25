@@ -6,6 +6,7 @@
 #include "string.hpp"
 #include "function.hpp"
 #include "defs.hpp"
+#include "file.hpp"
 
 String Input(const char * InputText = "")
 {
@@ -15,17 +16,17 @@ String Input(const char * InputText = "")
     return inp;
 }
 
-void PrintLine(String ToPrint)
+void Print(String ToPrint, String Sep = "\n")
 {
-    printf("%s\n", ToPrint.GetChars());
+    printf("%s", (ToPrint + Sep).GetChars());
 }
 
 template <typename T>
 void PrintArray(Array<T> arr, String Sep = " ")
 {
-    for (T elem : arr)
+    for (auto elem : arr)
     {
-        Print(elem, Sep);
+        Print((String) elem, Sep);
     }
 }
 
@@ -36,10 +37,3 @@ void Swap(T &Element1, T &Element2)
     Element1 = Element2;
     Element2 = buff;
 }
-
-/*
-Array<String> SplitString(String ToSplit, String Sep)
-{
-
-}
-*/

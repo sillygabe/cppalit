@@ -1,27 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-#include <stdarg.h>
 #include "error.hpp"
-
-char * EvalDigit(int num)
-{
-    char * ret;
-    switch (num % 10)
-    {
-    case 0: ret = (char *)"0"; break;
-    case 1: ret = (char *)"1"; break;
-    case 2: ret = (char *)"2"; break;
-    case 3: ret = (char *)"3"; break;
-    case 4: ret = (char *)"4"; break;
-    case 5: ret = (char *)"5"; break;
-    case 6: ret = (char *)"6"; break;
-    case 7: ret = (char *)"7"; break;
-    case 8: ret = (char *)"8"; break;
-    case 9: ret = (char *)"9"; break;
-    default: ThrowError("wtf man did you invent a new digit or what"); break;
-    }
-    return ret;
-}
 
 class String
 {
@@ -58,13 +37,12 @@ public:
 
     String(int num)
     {
-        this->content = (char *) malloc(0);
-        while (num != 0)
-        {
-            this->operator+=(EvalDigit(num));
-            num /= 10;
-        }
-        this->Reverse();
+        int length = snprintf(NULL, 0, "%d", num);         
+        char* str = (char *) malloc(length + 1);
+
+        snprintf(str, length + 1, "%d", num); 
+
+        this->content = str;
     }
 
     String operator+(String other)
@@ -117,6 +95,30 @@ public:
         }
     }
 
+    void Replace(const char* ToReplace, const char* ReplaceStr, int Times = -1)
+    {
+
+        if (Times < -1)
+        {
+            return;
+        }
+
+        char* NewString = (char*)malloc(strlen(this->content) * sizeof(char));
+        char* Save = this->content;
+        int pos;
+
+        while (Times != 0 && (pos = strstr(Save, ToReplace) - Save) >= 0)
+        {
+            strncat(NewString, Save, pos);
+            strcat(NewString, ReplaceStr);
+            Save += pos + strlen(ToReplace);
+            Times--;
+        }
+
+        strcat(NewString, Save);
+        this->content = NewString;
+    }
+
     char * begin()
     {
         return &(this->content[0]);
@@ -140,11 +142,3 @@ public:
         return count;
     }
 };
-
-/*
-String Format(String ToFormat, ...)
-{
-    va_list args; va_start(args, ToFormat);
-
-}
-*/
