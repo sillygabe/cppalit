@@ -36,14 +36,22 @@ public:
 
     char * Read()
     {
-        char * Buffer = (char *) malloc(20);
-        fscanf(this->ReadFile, "%s", Buffer);
-        return Buffer;
+        if (this->Initialised)
+        {
+            char * Buffer = (char *) malloc(20);
+            fscanf(this->ReadFile, "%s", Buffer);
+            return Buffer;
+        } else {
+            return (char *) "";
+        }
     }
 
     void Write(char * ToWrite)
     {
-        fprintf(this->WriteFile, "%s", ToWrite);
+        if (this->Initialised)
+        {
+            fprintf(this->WriteFile, "%s", ToWrite);
+        }
     }
 
     void Close()
